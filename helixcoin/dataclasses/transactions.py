@@ -10,7 +10,6 @@ class Transaction:
     amount: float  # Amount of Helix being transfered
     timestamp: float  # Time when transaction was made
 
-
     @staticmethod
     def new(cls, sender, recipient, amount):  # Static Method to create new Transactuib
         """
