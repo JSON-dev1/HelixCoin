@@ -4,7 +4,7 @@ from textwrap import dedent
 from time import time
 from uuid import uuid4
 from flask import Flask, jsonify, request
-from classes import block
+from files_needed import block
 
 app = Flask(__name__)
 blockchain = block.Block()
