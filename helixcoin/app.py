@@ -7,10 +7,14 @@ from flask import Flask, jsonify, request
 from dataclasses import *
 
 app = Flask(__name__)
+blockchain = block.Block()
 
 @app.route('/mine', methods = ['GET'])
 def mine():
     return "We'll mine a new block"
+last_block = blockchain.last_block
+last_proof = last_block['proof']
+proof = blockchain.proof_of_work(last_proof)
 @app.route('/transactions/new', methods = ['POST'])
 def new_transactions():
     return "We'll add a new transaction"
@@ -21,13 +25,17 @@ def full_chain():
         'length': len(block.Block)
     }
     return jsonify(response), 200
+previous_hash = blockchain.hash(last_block)
+block1 = blockchain.new_proof(proof, previous_hash)
+response = {
+        'message': "New Block Forged",
+        'index': block1['index'],
+        'transactions': block1['transactions'],
+        'proof': block1['proof'],
+        'previous_hash': block1['previous_hash'],
+    }
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', port=5000)
-
-
-
-
-
 
 
 
