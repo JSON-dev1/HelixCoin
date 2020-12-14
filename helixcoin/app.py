@@ -4,7 +4,7 @@ from textwrap import dedent
 from time import time
 from uuid import uuid4
 from flask import Flask, jsonify, request
-from classes import *
+from classes import block
 
 app = Flask(__name__)
 blockchain = block.Block()
@@ -37,7 +37,7 @@ response = {
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', port=5000)
 
-
+  
 
 
     
