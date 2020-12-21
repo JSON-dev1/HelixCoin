@@ -60,3 +60,12 @@ class Block:
             result = sha256(f'{merkle_root}{nonce}'.encode()).hexdigest()
 
         return result
+    
+    def new_transaction(self, transaction):
+        self.transactions.append(transaction)
+
+    def time_stamp(self, time_stamp):
+        self.timestamp.append(time_stamp)  
+    
+
+
