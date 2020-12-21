@@ -5,10 +5,20 @@ from time import time
 from uuid import uuid4
 from flask import Flask, jsonify, request
 from files_needed import block
+from files_needed import transactions
 
 app = Flask(__name__)
 blockchain = block.Block()
 
+@app.route('/new-transactions', methods=['POST'])
+def new_transactions(sender, recipient, amount):
+    transaction = transactions.Transaction.new(sender, recipient, amount)
+    block.Block.new_transaction(transaction)
+    return " " 
+@app.route('/time-stamp', methods=['POST'])
+def time_stamp(sender, recipient):
+     time_stamp = timestamp.time_stamp.new(sender, recipient)
+     block.Block.time_stamp(timestamp)
 @app.route('/mine', methods = ['GET'])
 def mine():
     return "We'll mine a new block"
