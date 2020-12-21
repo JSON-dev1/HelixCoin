@@ -19,15 +19,14 @@ def new_transactions(sender, recipient, amount):
 def time_stamp(sender, recipient):
      time_stamp = timestamp.time_stamp.new(sender, recipient)
      block.Block.time_stamp(timestamp)
+     return time_stamp
+
 @app.route('/mine', methods = ['GET'])
 def mine():
     return "We'll mine a new block"
 last_block = blockchain.last_block
 last_proof = last_block['proof']
 proof = blockchain.proof_of_work(last_proof)
-@app.route('/transactions/new', methods = ['POST'])
-def new_transactions():
-    return "We'll add a new transaction"
 @app.route('/chain', methods = ['GET'])
 def full_chain():
     response = {
@@ -46,7 +45,7 @@ response = {
     }
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', port=5000)
-
+ 
   
 
 
