@@ -1,5 +1,6 @@
 import hashlib
 import json
+import requests
 from textwrap import dedent
 from time import time
 from uuid import uuid4
@@ -20,6 +21,11 @@ def time_stamp(sender, recipient):
      time_stamp = timestamp.time_stamp.new(sender, recipient)
      block.Block.time_stamp(timestamp)
      return time_stamp
+@app.route('/index', methods=['POST'])
+def index(sender, recipient):
+    index = index.index.new(sender, recipient)
+    block.Block.index(index)
+    return index
 
 @app.route('/mine', methods = ['GET'])
 def mine():
