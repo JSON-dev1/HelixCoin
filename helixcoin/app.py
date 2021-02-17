@@ -10,12 +10,12 @@ from files_needed import transactions
 app = Flask(__name__)
 blockchain = block.Block()
 
-@app.route('/new-transactions', methods=['POST'])
+@app.route('/new_transaction', methods=['POST'])
 def new_transactions(sender, recipient, amount):
     transaction = transactions.Transaction.new(sender, recipient, amount)
     block.Block.new_transaction(transaction)
     return " " 
-@app.route('/time-stamp', methods=['POST'])
+@app.route('/time_stamp', methods=['POST'])
 def time_stamp(sender, recipient):
      time_stamp = timestamp.time_stamp.new(sender, recipient)
      block.Block.time_stamp(timestamp)
