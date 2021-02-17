@@ -67,5 +67,7 @@ class Block:
     def time_stamp(self, time_stamp):
         self.timestamp.append(time_stamp)  
     
+    def index(self, index):
+        self.index.append(index)
 
 
